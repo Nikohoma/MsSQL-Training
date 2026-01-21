@@ -44,3 +44,28 @@ WHERE FullName LIKE '%m%';
 SELECT *
 FROM dbo.Orders
 ORDER BY OrderDate asc;
+
+-- TOP
+SELECT TOP 3 * into top_orders
+FROM dbo.Orders
+ORDER BY Amount DESC;
+
+-- 2nd highest order amount (Offset and limit are performance heavy)
+SELECT TOP 1 *
+FRom 
+(
+SELECT TOP 2 *
+FROM dbo.Orders
+ORDER BY Amount DESC
+) t 
+ORder by t.Amount
+
+-- 2nd Highest Amount
+SELECT TOP 1 * FROM ORDERS o1
+WHERE o1.Amount < 
+(
+SELECT TOP 1 o2.Amount FROM 
+Orders o2
+ORDER BY o2.Amount DEsc
+)
+ORDER By o1.Amount Desc
