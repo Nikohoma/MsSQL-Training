@@ -46,5 +46,5 @@ END
 
 go 
 
-CustomerByName 'Gopi%'
+CustomerByName 'Gopi Suresh'
 
